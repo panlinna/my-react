@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Basic Example with Click Counter</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="message" align="center"></div>
+
+    <script type="text/babel">
+      var Counter = React.createClass({
+        //创建一个对象
+        getInitialState: function () {
+          return { clickCount: 0 };
+        },
+        addClick: function () {
+
+          this.setState({
+            clickCount:this.state.clickCount +1,
+            //取出this.state.clickcount  并 +1
+          });
+        },
+        subClick: function () {
+          this.setState({
+            clickCount:this.state.clickCount -1,
+          });
+        },
+        render:function () {
+          var styleJson = {
+            myDiv:{
+              display:"block",
+              backgroundcolor:"pink"
+            }
+          };
+          return (
+            <div>
+              <h2 style={styleJson.myDiv}> 点击次数：{this.state.clickCount}</h2>
+              <button onClick={this.addClick}>Counter: +1</button>
+              <button onClick={this.subClick}>Counter: -1</button>
+            </div>
+          )
+        }
+      })
+
+      ReactDOM.render(
+        <Counter/>,
+        document.getElementById('message')
+      )
+    </script>
+  </body>
+</html>
